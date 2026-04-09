@@ -24,5 +24,5 @@ COPY . .
 EXPOSE 7860
 
 # Command to run the application
-# Hugging Face Spaces expects the app to run on port 7860
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
+# Use the PORT environment variable if provided, else default to 7860
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-7860}"]
